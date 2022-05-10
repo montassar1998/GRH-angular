@@ -12,6 +12,7 @@ export class CandidatsComponent implements OnInit {
    
   constructor(private CandidatsService: CandidatsService ) {
     this.candidats = CandidatsService.listeCandidats();
+    console.log("hello 123")
     }
 
   ngOnInit(): void {
