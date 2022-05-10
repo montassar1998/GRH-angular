@@ -1,0 +1,57 @@
+
+<div class="container mt-5 justify-content-center align-content-center">
+    <div class="row">
+      <div class="col">
+        <form class="d-flex flex-lg-row-reverse">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCandidat">
+           Ajouter un candidat 
+          </button>
+        </form>
+        <hr class="text-muted mt-4">
+        <div class="modal fade" id="addCandidat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"> Add new Candidat</h5>
+                  <button type="button" class="btn-close border-0" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                      <div class="mb-3">
+                        <label class="form-label">Nom</label>
+                        <input type="text" [(ngModel)]="newCandidat.nom" name="nom" class="form-control" id="nom" >
+                      </div>
+            
+                      <div class="mb-3">
+                        <label  class="form-label">Prenom</label>
+                        <input type="text" [(ngModel)]="newCandidat.prenom" name="prenom"   class="form-control" id="prenom" >
+                      </div>
+                      <div class="mb-3">
+                        <label  class="form-label">Age</label>
+                        <input type="number" [(ngModel)]="newCandidat.age" name="age"  class="form-control" id="age" >
+                      </div>
+                      <div class="mb-3">
+                        <label  class="form-label">Profession</label>
+                        <input type="text" [(ngModel)]="newCandidat.profession" name="profession"   class="form-control" id="profession" >
+                      </div>
+                      <div class="mb-3">
+                        <label  class="form-label">Email</label>
+                        <input type="email"   [(ngModel)]="newCandidat.email" name="email" class="form-control" id="email" >
+                      </div>
+                      <div class="mb-3">
+                        <label  class="form-label">Telephone</label>
+                        <input type="tel"   [(ngModel)]="newCandidat.tel" name="tel"     class="form-control" id="tel" >
+                      </div>
+                      <div class="mb-3">
+                        <label  class="form-label">Avatar</label>
+                        <input type="file"  [(ngModel)]="newCandidat.avatar" name  class="form-control" id="avatar" >
+                      </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addCandidat()"  >Add candidat</button>
+                          </div>
+                      </form>
+                </div>
+              </div>
+            </div>
+          </div>
