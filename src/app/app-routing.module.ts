@@ -27,7 +27,7 @@ const routes: Routes = [
       import('./recruemodule/recruemodule.module').then(
         (m) => m.RecruemoduleModule
       ),
-    canLoad: [ControleGuard] ,
+    canLoad: [ControleGuard] 
   },
   { path: '**', component: NotFoundComponent },
 ];

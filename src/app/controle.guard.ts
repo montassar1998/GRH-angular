@@ -12,11 +12,11 @@ export class ControleGuard implements CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+   
       if (this.authService.isAdmin())
       return true;
       else
       {
-      this.router.navigate(['app-forbidden']);
       return false;
       }
       
