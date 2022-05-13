@@ -10,9 +10,23 @@ export class AuthService {
     { username: 'admin', password: '123', roles: ['ADMIN'] },
     { username: 'Kalthoum', password: '123', roles: ['USER'] },
   ];
+
   public loggedUser: string;
   public isloggedIn: Boolean = false;
   public roles: string[];
+  setLoggedUserFromLocalStorage(loggedUser: string) {
+    this.loggedUser = loggedUser;
+    this.isloggedIn = true;
+    this.getUserRoles(loggedUser);
+  }
+  getUserRoles(username: string) {
+    this.users.forEach((curUser) => {
+      if (curUser.username == username) {
+        this.roles = curUser.roles;
+      }
+    });
+  }
+
   constructor(private router: Router) {}
   //déconnexion
   logout() {
@@ -21,7 +35,7 @@ export class AuthService {
     this.roles = undefined;
     localStorage.removeItem('loggedUser');
     localStorage.setItem('isloggedIn', String(this.isloggedIn));
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   }
 
   //connexion

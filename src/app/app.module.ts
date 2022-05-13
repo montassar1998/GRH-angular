@@ -13,6 +13,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { RecruemoduleModule } from './recruemodule/recruemodule.module';
+import { AccessdeniedComponent } from './accessdenied/accessdenied.component';
+import { ControleGuard } from './controle.guard';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,10 @@ import { RecruemoduleModule } from './recruemodule/recruemodule.module';
     NotFoundComponent,
     LoginComponent,
     SignupComponent,
+    AccessdeniedComponent,
   ],
   imports: [BrowserModule, RecruemoduleModule, AppRoutingModule, FormsModule],
-  providers: [],
+  providers: [ControleGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

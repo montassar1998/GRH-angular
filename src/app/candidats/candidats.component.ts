@@ -18,6 +18,14 @@ export class CandidatsComponent implements OnInit {
   ngOnInit(): void {
     this.candidats = this.candserv.listeCandidats().filter((e) => !e.state);
     console.log(this.candidats);
+let isloggedin: string;
+let loggedUser:string;
+isloggedin = localStorage.getItem('isloggedIn');
+loggedUser = localStorage.getItem('loggedUser');
+if (isloggedin!="true" || !loggedUser)
+this.router.navigate(['/']);
+else
+this.authService.setLoggedUserFromLocalStorage(loggedUser);
 
     this.candserv.candsUpdated.subscribe(
       (cand) => {
