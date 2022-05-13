@@ -1,0 +1,36 @@
+
+<div class="container mt-5 p-5">
+  <div class="row ">
+    <div class="col-12 d-flex justify-content-center align-items-center align-content-center">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><!--  -->
+            <img src="{{cand.avatar}}" alt="Avatar" style="width:300px;height:300px;">
+           
+              <h4 class="card-title font-weight-bold">{{ cand.prenom| uppercase }} 
+                {{ cand.nom| uppercase }}</h4> <p class="profession">{{ cand.age }} ans</p>
+              <hr class="bg-warning"> 
+              <p class="text-center">{{ cand.profession }}</p> 
+              <p><i class="fas fa-quote-left"></i>{{cand.Description}}</p>
+            
+          </div>
+
+          <div class="flip-card-back">
+            <div class="main">
+              <p class="lead">Contact</p>
+             <hr class="bg-warning">
+             <i class="fa fa-phone-square text-success" aria-hidden="true"></i>
+             {{ cand.tel }}
+              <hr>
+              
+              
+              <button (click)="gotoHome()" type="button" class="btn  mt-3 btn-outline-success">retourner
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

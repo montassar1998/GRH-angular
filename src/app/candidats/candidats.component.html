@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <br>
+            <br>
+            <button type="button" class="btn btn-success" (click)="changerEtatForm($event.target)">
+                Ajouter un candidat
+            </button>
+        </div>
+    </div>
+    <hr>
+    <app-add-candidat  *ngIf="estOuvert"></app-add-candidat>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col table-responsive">
+                <table class="table table-hover table-borderless pt-2 align-middle text-center justify-content-center ">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prenom</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Profession</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Tel</th>
+                            <th scope="col">Avatar</th>
+                            <th scope="col text-center"></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let candidat of candidats" >
+
+                        <tr class="align-middle text-center justify-content-center" *ngIf="candidat.state==false">
+                            <td>{{candidat.id}}</td>
+                            <td>{{candidat.nom}}</td>
+                            <td>{{candidat.prenom}}</td>
+                            <td>{{candidat.age}}</td>
+                            <td>{{candidat.profession}}</td>
+                            <td>{{candidat.email}}</td>
+                            <td>{{candidat.tel}}</td>
+                            <td> <img src="{{candidat.avatar}}" class="rounded-circle w-50 h-50 me-2"></td>
+                            <td>
+                                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                            <button (click)="gotoDetailsCandidate(candidat)"  class="btn btn-warning me-1 rounded-circle text-white" data-bs-toggle="modal" data-bs-target="#DetailsCandidat"  ><i class="fa fa-eye" aria-hidden="true">
+                           </i></button>  
+
+
+                           <button class="btn btn-danger  me-2 rounded-circle text-white" role="button"
+                           (click)="supprimerCandidat(candidat)" *ngIf="authService.isAdmin()">
+                           <i class="fa fa-trash" aria-hidden="true"></i> </button>
+                       <button class="btn btn-success rounded-circle"
+                           (click)="gotoEditCandidate(candidat)" *ngIf="authService.isAdmin()" > <i class="fa fa-pencil"
+                               aria-hidden="true"></i></button>
+
+                                    <button (click)="changestate(candidat)" *ngIf="authService.isAdmin()" class="btn btn-primary ms-1 rounded-circle  text-white"><i
+                               class="fa fa-user-plus" aria-hidden="true"></i> </button>  
+
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

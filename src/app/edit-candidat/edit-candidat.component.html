@@ -1,0 +1,54 @@
+<router-outlet></router-outlet>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <form #f="ngForm" >
+  <div class="mb-3">
+    <label class="form-label">Nom</label>
+    <input type="text" [(ngModel)]="this.candServ.Candidats[idToModify-1].nom"  name="nom" class="form-control" id="nom">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Prenom</label>
+    <input type="text" [(ngModel)]="this.candServ.Candidats[idToModify-1].prenom" name="prenom" class="form-control" id="prenom">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Age</label>
+    <input type="number" [(ngModel)]="this.candServ.Candidats[idToModify-1].age" name="age" class="form-control" id="age">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Profession</label>
+    <input type="text" [(ngModel)]="this.candServ.Candidats[idToModify-1].profession" name="profession" class="form-control" id="profession">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" [(ngModel)]="this.candServ.Candidats[idToModify-1].email" name="email" class="form-control" id="email">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Telephone</label>
+    <input type="tel" [(ngModel)]="this.candServ.Candidats[idToModify-1].tel" name="tel" class="form-control" id="tel">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Avatar</label>
+    <select name="pets" [ngModel]="this.candServ.Candidats[idToModify-1].avatar" name="avatar" id="pet-select">
+      <option selected value="https://cliply.co/wp-content/uploads/2020/08/442008110_GLANCING_AVATAR_3D_400px.gif">Male</option>
+      <option value="https://cliply.co/wp-content/uploads/2020/10/442010361_WINKING_AVATAR_3D_400px.gif">Female</option>
+      <option value="https://cliply.co/wp-content/uploads/2020/09/442008572_ARTIST_AVATAR_3D_400px.gif">Boss</option>
+  
+  </select>
+  
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Description</label>
+    <input type="text" [(ngModel)]="this.candServ.Candidats[idToModify-1].Description" name="Description" class="form-control" id="Description">
+  </div>
+  <div >
+    <button  (click)="gotoHome()" type="button" class="btn btn-outline-success" 
+      >modifier candidat
+  </button>
+  </div>
+</form>
+    </div>
+  </div>
+</div>
+ 
