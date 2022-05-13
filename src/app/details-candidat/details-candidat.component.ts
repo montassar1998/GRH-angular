@@ -20,6 +20,8 @@ export class DetailsCandidatComponent implements OnInit {
 
     this.cand = this.candServ.Candidats[this.id_de_rand_recu - 1];
     console.log('received cand detail ', this.candServ.Candidats);
+    
+    
   }
   gotoHome() {
     console.log(this.candServ.Candidats);

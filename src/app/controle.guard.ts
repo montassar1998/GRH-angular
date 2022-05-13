@@ -1,24 +1,27 @@
-import { Injectable } from '@angular/core';
-import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Injectable }           from '@angular/core';
+import { 
+    Route, 
+    Router, 
+    CanLoad, 
+    CanActivate,
+    ActivatedRouteSnapshot, 
+    RouterStateSnapshot }       from '@angular/router';
 import { AuthService } from './service/auth.service';
+import { CandidatService } from './service/candidat.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ControleGuard implements CanLoad {
-  constructor (private authService: AuthService,
-    private router : Router) {}
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-   
-      if (this.authService.isAdmin())
-      return true;
-      else
-      {
-      return false;
-      }
-      
-  }
+ 
+  constructor(private router: Router, public authService : AuthService) {
+    console.log("AuthGuard constructor")
+}
+
+canLoad(route: Route): boolean {
+  console.log(route.path+"     "+this.authService.isAdmin())
+    if (route.path === "shifts") {
+        return true;
+    } else {
+        return false;
+    }        
+}
 }

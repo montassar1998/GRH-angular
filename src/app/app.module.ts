@@ -15,7 +15,7 @@ import { SignupComponent } from './signup/signup.component';
 import { RecruemoduleModule } from './recruemodule/recruemodule.module';
 import { AccessdeniedComponent } from './accessdenied/accessdenied.component';
 import { ControleGuard } from './controle.guard';
-
+import {HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,7 @@ import { ControleGuard } from './controle.guard';
     SignupComponent,
     AccessdeniedComponent,
   ],
-  imports: [BrowserModule, RecruemoduleModule, AppRoutingModule, FormsModule],
+  imports: [HttpClientModule ,BrowserModule, RecruemoduleModule, AppRoutingModule, FormsModule],
   providers: [ControleGuard],
   bootstrap: [AppComponent],
 })

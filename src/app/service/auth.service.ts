@@ -54,6 +54,7 @@ export class AuthService {
         localStorage.setItem('isloggedIn', String(this.isloggedIn));
       }
     });
+    alert(this.isAdmin())
     return validUser;
   }
 
