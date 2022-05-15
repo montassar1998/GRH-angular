@@ -12,31 +12,33 @@ export class DetailsRecrueComponent implements OnInit {
   @Input() candidats: Candidat[];
   activatedRoute: any;
 
-  constructor(public candserv: CandidatService, private router: Router, public authService: AuthService) {}
+  constructor(
+    public candserv: CandidatService,
+    private router: Router,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.candidats = this.candserv
       .listeCandidats()
       .filter((e) => e.state == true);
-    console.log("started with ",this.candidats);
+    console.log('started with ', this.candidats);
   }
 
   editRecruitee(c) {
-   
-    this.router.navigate(["recrues",c.id,"editr"]);
-    alert('nekdeù' + c.id);
+    this.router.navigate(['recrues', c.id, 'editr']);
+    //alert('nekdeù' + c.id);
   }
 
   fireRecruitee(c: Candidat) {
     console.log(c);
     let conf = confirm('Etes-vous sûr ?');
     console.log(c);
-    this.router.navigate(["recrues",c.id,"fire"]);
+    this.router.navigate(['recrues', c.id, 'fire']);
 
-    if (conf) 
-    this.candserv.supprimerCandidat(c);
-    this.candidats = this.candserv.listeCandidats()
-    .filter((e) => e.state == true);
-   
+    if (conf) this.candserv.supprimerCandidat(c);
+    this.candidats = this.candserv
+      .listeCandidats()
+      .filter((e) => e.state == true);
   }
 }

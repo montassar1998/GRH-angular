@@ -7,11 +7,12 @@ import { FireRecrueComponent } from './fire-recrue/fire-recrue.component';
 
 let sub_routes: Routes = [
   {
-    path: 'recrues',component : DetailsRecrueComponent,
+    path: 'recrues',
+    component: DetailsRecrueComponent,
     children: [
       { path: ':id/editr', component: EditRecrueComponent },
       { path: ':id/fire', component: FireRecrueComponent },
-    ]
+    ],
   },
 ];
 

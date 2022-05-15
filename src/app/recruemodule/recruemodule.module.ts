@@ -16,12 +16,12 @@ import { ControleguardGuard } from '../controleguard.guard';
     EditRecrueComponent,
     FireRecrueComponent,
   ],
-  imports: [CommonModule, SUB_ROUTING,FormsModule],
-  bootstrap:[AppComponent],
-  providers:[ControleguardGuard]
+  imports: [CommonModule, SUB_ROUTING, FormsModule],
+  bootstrap: [AppComponent],
+  providers: [ControleguardGuard],
 })
 export class RecruemoduleModule {
-  constructor(){
-    alert("loaded recrue module")
+  constructor() {
+    //alert('loaded recrue module');
   }
 }

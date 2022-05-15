@@ -4,7 +4,8 @@ import { ApiServiceService } from '../api-service.service';
 import { Candidat } from '../models/Candidat';
 import { AuthService } from '../service/auth.service';
 import { CandidatService } from '../service/candidat.service';
-
+import { HttpClient } from '@angular/common/http';
+import { waitForAsync } from '@angular/core/testing';
 @Component({
   selector: 'app-candidats',
   templateUrl: './candidats.component.html',
@@ -16,13 +17,14 @@ export class CandidatsComponent implements OnInit {
     public authService: AuthService,
     public apiServ: ApiServiceService,
     public candserv: CandidatService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {}
   estOuvert;
 
   editOuvert;
-  ngOnInit(): void {
-    this.candidats = this.candserv.listeCandidats().filter((e) => !e.state);
+
+  async ngOnInit(): Promise<void> {
     console.log(this.candidats);
     let isloggedin: string;
     let loggedUser: string;
@@ -30,11 +32,16 @@ export class CandidatsComponent implements OnInit {
     loggedUser = localStorage.getItem('loggedUser');
     if (isloggedin != 'true' || !loggedUser) this.router.navigate(['/']);
     else this.authService.setLoggedUserFromLocalStorage(loggedUser);
-
+    //sync cands from service
     this.candserv.candsUpdated.subscribe((cand) => {
       //alert("hani houni" + cand)
       this.candidats = cand;
     });
+    this.waitLoad();
+    this.candidats = this.candserv.listeCandidats().filter((e) => !e.state);
+  }
+  waitLoad() {
+    this.apiServ.loadData();
   }
 
   changerEtatForm(e) {
@@ -57,6 +64,7 @@ export class CandidatsComponent implements OnInit {
       this.candserv.supprimerCandidat(c);
       this.apiServ.deleteCand(c);
     }
+    this.candserv.compteur--;
   }
 
   gotoEditCandidate(c) {
@@ -65,7 +73,6 @@ export class CandidatsComponent implements OnInit {
   gotoDetailsCandidate(c) {
     this.router.navigateByUrl('candidats/' + c.id + '/details');
   }
-
   //hire someone
   changestate(c) {
     // this.router.navigate(['recrues'])

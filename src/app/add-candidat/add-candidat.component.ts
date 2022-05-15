@@ -16,7 +16,7 @@ export class AddCandidatComponent implements OnInit {
     private candserv: CandidatService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private apis : ApiServiceService
+    private apis: ApiServiceService
   ) {}
   ngOnInit(): void {
     this.newCandidat = new Candidat();
@@ -27,6 +27,6 @@ export class AddCandidatComponent implements OnInit {
     console.log('add cand', newC);
     newC.state = false;
     this.candserv.addCandidateToCandidats(newC);
-  this.apis.addCandidat(newC)
+    this.apis.addCandidat(newC);
   }
 }

@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
+import { ApiServiceService } from '../api-service.service';
 import { Candidat } from '../models/Candidat';
 
 @Injectable({
@@ -86,9 +87,7 @@ export class CandidatService {
     ];
     this.compteur = this.Candidats.length;
   }
- 
 
- 
   listeCandidats(): Candidat[] {
     return this.Candidats;
   }

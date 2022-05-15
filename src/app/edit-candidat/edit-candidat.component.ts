@@ -14,14 +14,14 @@ export class EditCandidatComponent implements OnInit {
     public candServ: CandidatService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private apiServ : ApiServiceService
+    private apiServ: ApiServiceService
   ) {}
 
   ngOnInit(): void {
     // console.log("I received ", this.cand);
     this.idToModify = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.idToModify == -1) {
-      alert('non existant ');
+      alert("ce candidat est indisponible");
     }
     console.log(
       'I received ',
@@ -31,8 +31,10 @@ export class EditCandidatComponent implements OnInit {
 
   async gotoHome() {
     console.log(this.candServ.Candidats);
-    
-    await this.apiServ.updateCandidat(this.candServ.Candidats.find((e) => e.id == this.idToModify))
+
+    await this.apiServ.updateCandidat(
+      this.candServ.Candidats.find((e) => e.id == this.idToModify)
+    );
     this.router.navigate(['candidats']);
   }
 }

@@ -12,10 +12,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
- 
+
   { path: 'accessdenied', component: AccessdeniedComponent },
   {
-    path: 'candidats', 
+    path: 'candidats',
     children: [
       { path: '', component: CandidatsComponent },
       { path: ':id/editcandidat', component: EditCandidatComponent },
@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./recruemodule/recruemodule.module').then(
         (m) => m.RecruemoduleModule
-      )
+      ),
   },
   { path: '**', component: NotFoundComponent },
 ];
@@ -36,7 +36,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers:[ControleguardGuard]
+  providers: [ControleguardGuard],
 })
 export class AppRoutingModule {}
 

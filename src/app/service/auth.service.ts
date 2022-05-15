@@ -18,7 +18,6 @@ export class AuthService {
     this.loggedUser = loggedUser;
     this.isloggedIn = true;
     this.getUserRoles(loggedUser);
-  
   }
   getUserRoles(username: string) {
     this.users.forEach((curUser) => {
@@ -27,9 +26,7 @@ export class AuthService {
       }
     });
   }
-  isLoggedIn(){
-   
-  }
+  isLoggedIn() {}
   constructor(private router: Router) {}
   //déconnexion
   logout() {

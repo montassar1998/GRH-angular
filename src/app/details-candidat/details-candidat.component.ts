@@ -15,14 +15,11 @@ export class DetailsCandidatComponent implements OnInit {
   ) {}
   id_de_rand_recu;
   ngOnInit(): void {
-    
     this.id_de_rand_recu = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.id_de_rand_recu);
 
     this.cand = this.candServ.Candidats[this.id_de_rand_recu - 1];
     console.log('received cand detail ', this.candServ.Candidats);
-    
-    
   }
   gotoHome() {
     console.log(this.candServ.Candidats);

@@ -3,13 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-accessdenied',
   templateUrl: './accessdenied.component.html',
-  styleUrls: ['./accessdenied.component.css']
+  styleUrls: ['./accessdenied.component.css'],
 })
 export class AccessdeniedComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
