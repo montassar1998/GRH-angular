@@ -18,6 +18,7 @@ export class AuthService {
     this.loggedUser = loggedUser;
     this.isloggedIn = true;
     this.getUserRoles(loggedUser);
+  
   }
   getUserRoles(username: string) {
     this.users.forEach((curUser) => {
@@ -26,7 +27,9 @@ export class AuthService {
       }
     });
   }
-
+  isLoggedIn(){
+   
+  }
   constructor(private router: Router) {}
   //déconnexion
   logout() {
@@ -54,7 +57,7 @@ export class AuthService {
         localStorage.setItem('isloggedIn', String(this.isloggedIn));
       }
     });
-    alert(this.isAdmin())
+    //alert(this.isAdmin())
     return validUser;
   }
 

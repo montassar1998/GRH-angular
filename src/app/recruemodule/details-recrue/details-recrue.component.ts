@@ -31,7 +31,8 @@ export class DetailsRecrueComponent implements OnInit {
     console.log(c);
     let conf = confirm('Etes-vous sûr ?');
     console.log(c);
-    
+    this.router.navigate(["recrues",c.id,"fire"]);
+
     if (conf) 
     this.candserv.supprimerCandidat(c);
     this.candidats = this.candserv.listeCandidats()

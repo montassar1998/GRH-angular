@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiServiceService } from '../api-service.service';
 import { Candidat } from '../models/Candidat';
 import { AuthService } from '../service/auth.service';
 import { CandidatService } from '../service/candidat.service';
@@ -11,36 +12,35 @@ import { CandidatService } from '../service/candidat.service';
 })
 export class CandidatsComponent implements OnInit {
   @Input() candidats: Candidat[];
-  constructor(public authService: AuthService , public candserv: CandidatService, private router: Router) {}
+  constructor(
+    public authService: AuthService,
+    public apiServ: ApiServiceService,
+    public candserv: CandidatService,
+    private router: Router
+  ) {}
   estOuvert;
 
   editOuvert;
   ngOnInit(): void {
     this.candidats = this.candserv.listeCandidats().filter((e) => !e.state);
     console.log(this.candidats);
-let isloggedin: string;
-let loggedUser:string;
-isloggedin = localStorage.getItem('isloggedIn');
-loggedUser = localStorage.getItem('loggedUser');
-if (isloggedin!="true" || !loggedUser)
-this.router.navigate(['/']);
-else
-this.authService.setLoggedUserFromLocalStorage(loggedUser);
+    let isloggedin: string;
+    let loggedUser: string;
+    isloggedin = localStorage.getItem('isloggedIn');
+    loggedUser = localStorage.getItem('loggedUser');
+    if (isloggedin != 'true' || !loggedUser) this.router.navigate(['/']);
+    else this.authService.setLoggedUserFromLocalStorage(loggedUser);
 
-    this.candserv.candsUpdated.subscribe(
-      (cand) => {
-        //alert("hani houni" + cand)
-        this.candidats = cand;
-      }
-    );
+    this.candserv.candsUpdated.subscribe((cand) => {
+      //alert("hani houni" + cand)
+      this.candidats = cand;
+    });
   }
-
- 
 
   changerEtatForm(e) {
     this.estOuvert = !this.candserv.estOuvert;
     this.candserv.estOuvert = !this.candserv.estOuvert;
-    //candserv état du component (visible ou pas pour le service ) 
+    //candserv état du component (visible ou pas pour le service )
     //sert à distinger entre le fait de soumettre ou de réduire sans rien faire
     //alert(this.estOuvert+"****"+this.candserv.estOuvert)
     if (e.textContent != 'réduire') {
@@ -53,7 +53,10 @@ this.authService.setLoggedUserFromLocalStorage(loggedUser);
   supprimerCandidat(c: Candidat) {
     console.log(c);
     let conf = confirm('Etes-vous sûr ?');
-    if (conf) this.candserv.supprimerCandidat(c);
+    if (conf) {
+      this.candserv.supprimerCandidat(c);
+      this.apiServ.deleteCand(c);
+    }
   }
 
   gotoEditCandidate(c) {

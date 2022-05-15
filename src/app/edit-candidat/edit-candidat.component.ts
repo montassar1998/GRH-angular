@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiServiceService } from '../api-service.service';
 import { Candidat } from '../models/Candidat';
 import { CandidatService } from '../service/candidat.service';
 @Component({
@@ -12,7 +13,8 @@ export class EditCandidatComponent implements OnInit {
   constructor(
     public candServ: CandidatService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private apiServ : ApiServiceService
   ) {}
 
   ngOnInit(): void {
@@ -27,8 +29,10 @@ export class EditCandidatComponent implements OnInit {
     );
   }
 
-  gotoHome() {
+  async gotoHome() {
     console.log(this.candServ.Candidats);
+    
+    await this.apiServ.updateCandidat(this.candServ.Candidats.find((e) => e.id == this.idToModify))
     this.router.navigate(['candidats']);
   }
 }

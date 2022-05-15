@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { FormsModule } from '@angular/forms';
+import { ControleguardGuard } from '../controleguard.guard';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,11 @@ import { FormsModule } from '@angular/forms';
     FireRecrueComponent,
   ],
   imports: [CommonModule, SUB_ROUTING,FormsModule],
-  bootstrap:[AppComponent]
+  bootstrap:[AppComponent],
+  providers:[ControleguardGuard]
 })
-export class RecruemoduleModule {}
+export class RecruemoduleModule {
+  constructor(){
+    alert("loaded recrue module")
+  }
+}
