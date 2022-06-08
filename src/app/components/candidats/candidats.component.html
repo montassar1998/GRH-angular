@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+       <table class="table table-hover table-borderless pt-2 align-middle text-center justify-content-center">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Age</th>
+            <th scope="col">Profession</th>
+            <th scope="col">Email</th>
+            <th scope="col">Tel</th>
+            <th scope="col">Avatar</th>
+            <th scope="col text-center">Operations</th>
+  
+          </tr>
+        </thead>
+        <tbody *ngFor="let candidat of candidats">
+          
+            <tr  class="align-middle text-center justify-content-center">
+              <td>{{candidat.id}}</td>
+              <td>{{candidat.nom}}</td>
+              <td>{{candidat.prenom}}</td>
+              <td>{{candidat.age}}</td>
+              <td>{{candidat.profession}}</td>
+              <td>{{candidat.email}}</td>
+              <td>{{candidat.tel}}</td>
+              <td> <img src="{{candidat.avatar}}" class="rounded-circle w-25 h-50 me-2"></td>
+            
+          <td class="btn-group text-center align-items-center justify-content-center" role="group" aria-label="">
+
+      
+      
+  <!--   <a class="btn btn-success  rounded-circle ms-2 text-white" data-bs-toggle="modal" data-bs-target="#editCandidat" href="#" role="button " ><i class="fa fa-pencil" aria-hidden="true"></i></a>-->
+  <app-details-candidats [cand]="candidat"  ></app-details-candidats>  
+  <app-edit-candidat [cand]="candidat"></app-edit-candidat>
+     <a class="btn btn-danger rounded-circle ms-2 text-white"  role="button" (click)="supprimerCandidat(candidat)"><i class="fa fa-trash" aria-hidden="true"></i> </a>
+     <a class="btn btn-primary rounded-circle ms-2 text-white" role="button"><i class="fa fa-user-plus" aria-hidden="true"></i> </a>
+ 
+   </td>
+    </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</div>
+        
+  
+      
+ 
+  
+  

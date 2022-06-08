@@ -1,0 +1,66 @@
+<div class="container mt-5 justify-content-center align-content-center">
+  <div class="row">
+    <div class="col">
+      
+      <hr class="text-muted mt-4">
+      <!-- <div *ngIf="!authService.isAdmin()" routerLink="add-candidat" class="modal fade" id="addCandidat" tabindex="-1"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content"><h5 class="modal-title" id="exampleModalLabel"> you're not connected</h5>
+        </div></div></div> -->
+
+
+      <div   class="modal fade" id="addCandidat" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> Add new Candidat</h5>
+              <button type="button" class="btn-close border-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form #f="ngForm">
+                <div class="mb-3">
+                  <label class="form-label">Nom</label>
+                  <input type="text" ngModel name="nom" class="form-control" id="nom">
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Prenom</label>
+                  <input type="text" ngModel name="prenom" class="form-control" id="prenom">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Age</label>
+                  <input type="number" ngModel name="age" class="form-control" id="age">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Profession</label>
+                  <input type="text" ngModel name="profession" class="form-control" id="profession">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input type="email" ngModel name="email" class="form-control" id="email">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Telephone</label>
+                  <input type="tel" ngModel name="tel" class="form-control" id="tel">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Avatar</label>
+                  <input type="file" ngModel name="avatar" class="form-control" id="avatar">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Description</label>
+                  <input type="text" ngModel name="Description" class="form-control" id="Description">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    (click)="addCandidat(f.value)">Add candidat</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
